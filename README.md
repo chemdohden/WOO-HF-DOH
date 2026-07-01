@@ -2,27 +2,50 @@
 
 
 
-#### 部署到 Hugging Face Spaces
 
--   打开 [Hugging Face](https://www.google.com/url?sa=E&q=https%3A%2F%2Fhuggingface.co%2F) 并登录您的账号。
+## Dockerfile 部署项目到 Hugging Face Spaces：
+
+如果您的镜像已经托管在 GitHub Container Registry (GHCR) 上，且该**镜像设为公开（Public）**，您可以在 Hugging Face 上创建一个 Docker Space，直接拉取该镜像运行。
+
+#### 1\. 准备工作
+
+确保您的 Docker 镜像：
+
+-   内部服务监听的端口为 7860（Hugging Face 强制要求绑定的端口）。
     
--   点击右上角头像，选择 **New Space** 创建新空间。
+-   如果不是 7860，请在您的 Dockerfile 中修改，或者在运行时通过环境变量传入端口。
     
--   填写基本配置：
+
+#### 2\. 在 Hugging Face 上创建 Space
+
+-   登录 Hugging Face，点击 **New Space**。
     
-    -   **Space name**: 您的项目名称（例如 my-dns-doh）。
-        
-    -   **License**: 可以任意选择（例如 mit）。
-        
-    -   **SDK**: 必须选择 **Docker**。
-        
-    -   **Template**: 选择 **Blank**（不使用预设模板）。
-        
-    -   **Space hardware**: 默认的 **Cpu basic (Free)** 即可满足性能要求。
-        
-    -   **Visibility**: 如果需要公开提供解析，建议设置为 **Public**。
-        
+-   输入 Space 名称，SDK 选择 **Docker**。
     
+-   模板选择 **Blank**（空白）。
+    
+-   权限选择 Public 或 Private 均可。
+    
+
+#### 3\. 创建 Dockerfile
+
+在 Hugging Face Space 的文件列表里，直接新建一个名为 Dockerfile 的文件，内容如下：
+
+code Dockerfile
+
+downloadcontent\_copy
+
+expand\_less
+
+```
+# 替换为您的 GHCR 镜像地址
+FROM ghcr.io/您的用户名/您的仓库名:latest
+
+# 如果您的镜像默认启动命令没有暴露 7860 端口，可以在这里重写 EXPOSE 和 CMD
+# EXPOSE 7860
+```
+
+保存后，Hugging Face 会自动拉取您的 GHCR 镜像并运行。    
 用变量形式保存上游服务器地址：
 打开您的 Hugging Face Space 页面。
 点击顶部的 Settings（设置）选项卡。
