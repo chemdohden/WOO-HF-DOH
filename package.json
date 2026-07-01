@@ -1,0 +1,9 @@
+{
+  "name": "node-dns-bridge",
+  "version": "1.0.0",
+  "description": "DNS-over-HTTPS to UDP/DoH Bridge",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  }
+}
