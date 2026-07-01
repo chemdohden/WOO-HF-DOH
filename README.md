@@ -23,21 +23,13 @@
     -   **Visibility**: 如果需要公开提供解析，建议设置为 **Public**。
         
     
--   创建完成后，进入仓库（Files and versions）页面。
-    
--   点击 **Add file** → **Upload files**，将 server.js、package.json 和 Dockerfile 这三个文件上传并提交（Commit）。
-    
--   上传后，系统会自动开始构建（Building → Running）。
-    
+# 1. 确保宿主机上已创建挂载文件
+touch /home/ubuntu/dns-data/upstreams.json
 
-当右上角状态变为绿色的 **Running** 时，说明您的多协议 DNS 桥接服务器已在 Hugging Face 上成功启动。您可以通过类似下方的专属地址配置到支持 DoH 的终端中使用了：
-
--  使用：
-
-```
-https://您的用户名-您的Space名称.hf.space/dns-query
-```
-
-
-
-浏览器直接访问部署的面板，例如 `https://您的用户名-空间名.hf.space/`，就可以打开控制面板。
+# 2. 拉取并运行您在 GitHub 构建的镜像
+docker run -d \
+  -p 7860:7860 \
+  -v /home/ubuntu/dns-data/upstreams.json:/usr/src/app/upstreams.json \
+  --name dns-bridge \
+  --restart unless-stopped \
+  ghcr.io/您的github用户名/您的仓库名:latest
