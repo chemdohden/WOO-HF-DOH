@@ -23,13 +23,12 @@
     -   **Visibility**: 如果需要公开提供解析，建议设置为 **Public**。
         
     
-# 1. 确保宿主机上已创建挂载文件
-touch /home/ubuntu/dns-data/upstreams.json
-
-# 2. 拉取并运行您在 GitHub 构建的镜像
-docker run -d \
-  -p 7860:7860 \
-  -v /home/upstreams.json:/usr/src/app/upstreams.json \
-  --name dns-bridge \
-  --restart unless-stopped \
-  ghcr.io/您的github用户名/您的仓库名:latest
+用变量形式保存上游服务器地址：
+打开您的 Hugging Face Space 页面。
+点击顶部的 Settings（设置）选项卡。
+向下滚动到 Variables and secrets（变量与凭据）区域。
+您会看到两个选项：
+New secret（推荐）：用于保存敏感信息（如服务器密码、Token、私密 IP）。添加后内容会被加密，外部无法查看。
+New variable：用于保存非敏感信息（如公共 API 地址、版本号）。添加后公开可见。
+示例：
+添加一个名为 UPSTREAM_SERVER_URL 的 Secret，Value 填写您的上游服务器地址（例如 https://your-upstream-server.com 或 http://1.2.3.4:8080）。
