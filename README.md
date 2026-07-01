@@ -29,7 +29,7 @@
 
 #### 3\. 创建 Dockerfile
 
-在 Hugging Face Space 的文件列表里，直接新建一个名为 Dockerfile 的文件，内容如下：
+在 Hugging Face Space 的文件列表里，直接新建一个名为 `Dockerfile` 的文件，内容如下：
 
 <br>
 
@@ -42,7 +42,7 @@ FROM ghcr.io/您的用户名/您的仓库名:latest
 ```
 <br>
 
-```
+
 保存后，Hugging Face 会自动拉取您的 GHCR 镜像并运行。    
 用变量形式保存上游服务器地址：
 打开您的 Hugging Face Space 页面。
@@ -52,5 +52,5 @@ FROM ghcr.io/您的用户名/您的仓库名:latest
 New secret（推荐）：用于保存敏感信息（如服务器密码、Token、私密 IP）。添加后内容会被加密，外部无法查看。
 New variable：用于保存非敏感信息（如公共 API 地址、版本号）。添加后公开可见。
 示例：
-添加一个名为 UPSTREAM_SERVER_URL 的 Secret，Value 填写您的上游服务器地址（例如 https://your-upstream-server.com 或 http://1.2.3.4:8080）。
-```
+添加一个名为 `UPSTREAM_SERVER_URL` 的 Secret，Value 填写您的上游服务器地址（例如 https://your-upstream-server.com 或 http://1.2.3.4:8080）。
+
