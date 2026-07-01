@@ -40,6 +40,8 @@ FROM ghcr.io/您的用户名/您的仓库名:latest
 # 如果您的镜像默认启动命令没有暴露 7860 端口，可以在这里重写 EXPOSE 和 CMD
 # EXPOSE 7860
 ```
+<br>
+
 ```
 保存后，Hugging Face 会自动拉取您的 GHCR 镜像并运行。    
 用变量形式保存上游服务器地址：
