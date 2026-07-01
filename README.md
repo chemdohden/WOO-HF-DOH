@@ -31,11 +31,7 @@
 
 在 Hugging Face Space 的文件列表里，直接新建一个名为 Dockerfile 的文件，内容如下：
 
-code Dockerfile
-
-downloadcontent\_copy
-
-expand\_less
+<br>
 
 ```
 # 替换为您的 GHCR 镜像地址
