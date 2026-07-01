@@ -55,7 +55,7 @@ FROM ghcr.io/您的用户名/您的仓库名:latest
     
 -   按以下规则填写：
     
-    -   **Name**: UPSTREAMS
+    -   **Name**: `UPSTREAMS`
         
     -   **Value**: 填入您的多个上游地址，**使用英文逗号 , 分隔**。
         
