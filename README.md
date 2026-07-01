@@ -29,7 +29,7 @@ touch /home/ubuntu/dns-data/upstreams.json
 # 2. 拉取并运行您在 GitHub 构建的镜像
 docker run -d \
   -p 7860:7860 \
-  -v /home/ubuntu/dns-data/upstreams.json:/usr/src/app/upstreams.json \
+  -v /home/upstreams.json:/usr/src/app/upstreams.json \
   --name dns-bridge \
   --restart unless-stopped \
   ghcr.io/您的github用户名/您的仓库名:latest
